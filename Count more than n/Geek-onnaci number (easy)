@@ -1,0 +1,32 @@
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args)throws IOException {
+	    BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		int t=Integer.parseInt(br.readLine());
+		while(t-->0)
+		{
+		    int sum=0,first=0,second=0,third=0,n=0;
+		    int a[]=new int[4];
+		    String s[]=br.readLine().split(" ");
+		    for(int i=0;i<4;i++)
+		    a[i]=Integer.parseInt(s[i]);
+		    n=a[3]-4;
+		    first=a[0];
+		    second=a[1];
+		    third=a[2];
+		    sum+=first+second+third;
+		    while(n-->0)
+		    {
+		        first=second;
+		        second=third;
+		        third=sum;
+		        sum+=first+second;
+		    }
+		    System.out.println(sum);
+		}//code
+	}
+}
