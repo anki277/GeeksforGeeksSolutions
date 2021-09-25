@@ -1,0 +1,60 @@
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Groceries{
+    String name;
+    int price;
+    
+    public Groceries(String name, int price){
+        this.name = name;
+        this.price = price;
+    }
+    
+    public String toString()
+    {
+        return this.name ;
+    }
+    
+}
+
+class ShortByPrice implements Comparator<Groceries>{
+    public int compare(Groceries g1, Groceries g2){
+        
+        if(g1.price == g2.price){
+            return g1.name.compareTo(g2.name);
+        }
+        
+        return g1.price - g2.price;
+    }
+}
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		
+		while(T-- > 0){
+		    int n = sc.nextInt();
+		    int y = sc.nextInt();
+		    Groceries[] a = new Groceries[n];
+		    
+		    for(int i=0;i<n;i++){
+		        String g = sc.next();
+		        int p = sc.nextInt();
+		        a[i] = new Groceries(g, p);
+		    }
+		    
+		    Arrays.sort(a, new ShortByPrice());
+		    
+		    for(int i=0;i<y;i++){
+		        System.out.print(a[i] + " ");
+		    }
+		    System.out.println();
+		}
+		
+	}	//code
+}
