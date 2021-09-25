@@ -1,0 +1,28 @@
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args)throws IOException {
+	    BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	    int t=Integer.parseInt(br.readLine());
+	    while(t!=0)
+	    {
+	        int n=Integer.parseInt(br.readLine());
+	        int a[]=new int[n];
+	        int sum=0,l=10;
+	        String s[]=br.readLine().split(" ");
+	        for(int i=0;i<s.length;i++)
+	        {
+	            a[i]=Integer.parseInt(s[i]);
+	        }
+	        for(int i=n-1;i>=0;i--)
+	        {
+	            sum+=Math.pow(a[i],2)*Math.pow(-1,l);
+	            l--;
+	        }
+	        System.out.print(sum);
+	        System.out.println();
+	        t--;
+	    }//code
+	}
+}
