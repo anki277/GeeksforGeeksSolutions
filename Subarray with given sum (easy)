@@ -1,0 +1,40 @@
+
+int main() {
+    int t;
+    scanf("%d\n",&t);
+    while(t--)
+    {
+        int n,s;
+        scanf("%d %d\n",&n,&s);
+        int a[n];
+        for(int i=0;i<n;i++)
+        scanf("%d ",&a[i]);
+        int sum=0,c=0,flag=0;
+        for(int i=0;i<n;i++)
+        {
+            if(sum+a[i]<=s)
+            {
+                sum+=a[i];
+            }
+            else
+            {
+                sum+=a[i];
+                while(sum>s)
+                {
+                    sum-=a[c];
+                    c++;
+                }
+            }
+            if(sum==s)
+            {
+                printf("%d %d\n",c+1,i+1);
+                flag=1;
+                break;
+            }
+        }
+        if(flag==0)
+        printf("-1\n");
+    }
+	//code
+	return 0;
+}
