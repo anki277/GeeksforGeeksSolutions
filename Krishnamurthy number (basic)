@@ -1,0 +1,42 @@
+//Initial Template for Java
+
+import java.io.*;
+import java.util.*;
+
+class GFG {
+    public static void main(String args[]) throws IOException {
+        BufferedReader read =
+            new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(read.readLine());
+        while (t-- > 0) {
+            int N = Integer.parseInt(read.readLine());
+
+            Solution ob = new Solution();
+            System.out.println(ob.isKrishnamurthy(N));
+        }
+    }
+}// } Driver Code Ends
+
+
+//User function Template for Java
+
+class Solution {
+    static String isKrishnamurthy(int N) {
+       int a=N,sum=0,rem=0,fact=1;
+       while(a>0)
+       {
+           rem=a%10;
+           for(int i=1;i<=rem;i++)
+           {
+               fact*=i;
+           }
+           sum+=fact;
+           fact=1;
+           a=a/10;
+       }// code here
+       if(sum==N)
+       return "YES";
+       else
+       return "NO";
+    }
+};
