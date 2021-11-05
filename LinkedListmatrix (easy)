@@ -1,0 +1,125 @@
+class Node
+{
+    int data;
+    Node right,down;
+    
+    Node(int data){
+        this.data = data;
+        right = null;
+        down = null;
+    }
+}
+public class Linked_list_2D_Matrix {
+ 
+    // node of linked list
+ 
+    static void display(Node head) {
+         
+        Node Rp;
+        Node Dp = head;
+        while (Dp != null) {
+            Rp = Dp;
+            while (Rp != null) {
+                System.out.print(Rp.data + " ");
+                Rp = Rp.right;
+            }
+            Dp = Dp.down;
+        }
+        System.out.println();
+    }
+ 
+    public static void main(String args[]) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t-->0)
+        {
+        int n=sc.nextInt();
+        int [][]arr=new int[n][n];
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++){
+            int p=sc.nextInt();arr[i][j]=p;}
+        }
+        GFG obj=new GFG();
+        Node head = obj.construct(arr, n);
+        display(head);
+        }
+    }
+ 
+}// } Driver Code Ends
+
+
+/*class Node
+
+class Node
+{
+    int data;
+    Node right,down;
+    
+    Node(int data){
+        this.data = data;
+        right = null;
+        down = null;
+    }
+}
+*/
+/*Function should return the head of the 2D LL.*/
+class GFG
+{
+    static Node construct(int arr[][],int n)
+    {
+        Node mainHead = null;
+ 
+        // stores the head of linked lists
+        // of each row
+        Node[] head = new Node[n];
+        Node rightTemp = new Node(n), newptr;
+ 
+        // Firstly, we create m linked lists
+        // by setting all the right nodes of every row
+        for(int i = 0; i < n; i++)
+        {
+ 
+            // initially set the head of
+            // ith row as NULL
+            head[i] = null;
+ 
+            for(int j = 0; j < n; j++)
+            {
+                newptr = new Node(arr[i][j]);
+ 
+                // stores the mat[0][0] node as
+                // the mainhead of the linked list
+                if(mainHead == null)
+                    mainHead = newptr;
+                if(head[i] == null)
+                    head[i] = newptr;
+                else
+                    rightTemp.right = newptr;
+ 
+                rightTemp = newptr;
+            }
+        }
+ 
+        // Then, for every ith and (i+1)th list,
+        // we set the down pointers of
+        // every node of ith list
+        // with its corresponding
+        // node of (i+1)th list
+        for(int i = 0; i < n- 1; i++)
+        {
+            Node temp1 = head[i], temp2 = head[i + 1];
+ 
+            while(temp1 != null && temp2 != null)
+            {
+                temp1.down = temp2;
+                temp1 = temp1.right;
+                temp2 = temp2.right;
+            }
+        }
+ 
+        // return the mainhead pointer
+        // of the linked list
+        return mainHead;  
+    }//Add your code here.
+    }
