@@ -1,0 +1,56 @@
+import java.util.*;
+
+
+class Implement_strstr
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		sc.nextLine();
+		while(t>0)
+		{
+			String line = sc.nextLine();
+			String a = line.split(" ")[0];
+			String b = line.split(" ")[1];
+			
+			GfG g = new GfG();
+			System.out.println(g.strstr(a,b));
+			
+			t--;
+		}
+	}
+}// } Driver Code Ends
+
+
+class GfG
+{
+    //Function to locate the occurrence of the string x in the string s.
+    int strstr(String X, String Y)
+    {
+       if (X == null || Y.length() > X.length()) {
+            return -1;
+        }
+ 
+        // if `Y` is null or is empty
+        if (Y == null || Y.length() == 0) {
+            return 0;
+        }
+ 
+        for (int i = 0; i <= X.length() - Y.length(); i++)
+        {
+            int j;
+            for (j = 0; j < Y.length(); j++) {
+                if (Y.charAt(j) != X.charAt(i + j)) {
+                    break;
+                }
+            }
+ 
+            if (j == Y.length()) {
+                return i;
+            }
+        }
+ 
+        return -1; // Your code here
+    }
+}
