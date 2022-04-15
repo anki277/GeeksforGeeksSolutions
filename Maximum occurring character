@@ -1,0 +1,48 @@
+import java.lang.*;
+import java.io.*;
+import java.util.*;
+class GFG
+{
+	public static void main (String[] args) throws IOException
+	{
+	 BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	 int tc=Integer.parseInt(br.readLine().trim());
+	 
+	 while(tc-- >0)
+	 {
+	     String line=br.readLine().trim();
+	     
+	     Solution obj = new Solution();
+	     
+	     System.out.println(obj.getMaxOccuringChar(line));
+	     
+	 }
+	 }
+}// } Driver Code Ends
+
+
+
+
+class Solution
+{
+    //Function to find the maximum occurring character in a string.
+    public static char getMaxOccuringChar(String line)
+    {
+          int n=line.length();
+        Map<Character,Integer> hm=new HashMap<>();
+        char ch = line.charAt(0);
+        int max=1;
+        for(int i=0;i<n;i++)
+            hm.merge(line.charAt(i),1,Integer::sum);//if key //does not exit insert it with value 1 and if key already //exist then sum the value with 1.
+        for(Map.Entry<Character,Integer>entry:hm.entrySet()){
+            if(entry.getValue()>max){
+                max=entry.getValue();
+                ch=entry.getKey();
+            }
+            else if(entry.getValue()==max)
+                ch=ch<entry.getKey()?ch:entry.getKey();
+        }
+        return ch;// Your code here
+    }
+    
+}
