@@ -1,0 +1,49 @@
+import java.util.*;
+import java.io.*;
+
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	  
+	  //taking input using Scanner class
+	  Scanner sc = new Scanner(System.in);
+	  
+	  //taking count of testcases
+	  int t = sc.nextInt();
+	  while(t-- > 0){
+	      
+	      //taking count of houses
+	      int n = sc.nextInt();
+	      int arr[] = new int[n];
+	      
+	      //inserting money present in 
+	      //each house in the array
+	      for(int i = 0; i<n; ++i)
+	           arr[i] = sc.nextInt();
+  	      
+  	      //calling method FindMaxSum() of class solve
+  	      System.out.println(new Solution().FindMaxSum(arr, n));
+	 }
+   }
+}// } Driver Code Ends
+
+
+class Solution
+{
+    //Function to find the maximum money the thief can get.
+    public int FindMaxSum(int arr[], int n)
+    {
+       int inc = arr[0], excl = 0;
+        for(int i = 1; i < n; i++)
+        {
+            int ninc = excl + arr[i];
+            int nexcl = Math.max(inc , excl);
+            
+            inc = ninc;
+            excl = nexcl;
+        }
+        
+        return Math.max(inc , excl);// Your code here
+    }
+}
