@@ -1,0 +1,41 @@
+//{ Driver Code Starts
+//Initial Template for Java
+
+
+import java.io.*;
+import java.util.*;
+class GfG
+{
+    public static void main(String args[])throws IOException
+        {
+            BufferedReader br = new BufferedReader( new InputStreamReader(System.in));
+            int t = Integer.parseInt(br.readLine());
+            while(t-->0)
+                {
+                    String str = br.readLine();
+                    Solution ob = new Solution();
+                    System.out.println(ob.transform(str));
+                }
+        }
+}
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+class Solution
+{
+    public String transform(String s)
+    {
+        char ch[]=s.toCharArray();
+        int i=0;
+        ch[i]=(char)((int)ch[i]-32);
+       for(i=1;i<s.length()-1;i++)
+       {
+           if(ch[i]==' ')
+           ch[i+1]=(char)((int)ch[i+1]-32);
+       }
+       String st=new String(ch);// code here
+       return st;
+    }
+}
